@@ -7,6 +7,7 @@ class Usuario(Base):
     __tablename__ = 'users'
 
 #so funciona com id auto increment
+
     id = Column(Integer, primary_key=True)
     nome = Column(String(80))
     usuario = Column(String(80))
@@ -17,5 +18,5 @@ class Usuario(Base):
         self.usuario = login
         self.senha = password
 
-    def __repr__(self):
-        return '<users(%s,%s,%s)' % (self.nome, self.usuario, self.senha)
+    def __str__(self):
+        return f'Nome: {self.nome} Usuario: {self.usuario} Senha: {self.senha}\n'
