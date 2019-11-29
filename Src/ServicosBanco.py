@@ -1,36 +1,38 @@
 from Conexao import Connection
 from MapUsuario import Usuario
 
-connection = Connection.create_session()
+class service:
 
-#insert
-if False:
-    usuario = Usuario('Joao', 'vrau', 'vrau')
-    connection.add(usuario)
-    connection.commit()
+    connection = Connection.create_session()
 
-#select all
-if False:
-    user = connection.query(Usuario).all()
+    #insert
+    def inserir(nome ,usuario, senha):
+        usuario = Usuario('Joao', 'vrau', 'vrau')
+        connection.add(usuario)
+        connection.commit()
 
-    for i in user:
-        print(i)
+    def select_all():
+        user = connection.query(Usuario).all()
+        return user
 
-#select pelo id
+    #select pelo id
 
-if False:
-    user = connection.query(Usuario).filter_by(id=1).first()
-    print(user)
+    def select_por_id(id : int):
+        user = connection.query(Usuario).filter_by(id=id).first()
+        return user
 
-#alterar 
-if False:
-    user = connection.query(Usuario).filter_by(id=1).first()
-    user.nome = 'Teste'
-    connection.commit()
-    print(user)
+    def select_por_nome(nome):
+        user = connection.query(Usuario).filter_by(nome=nome).first()
+        return user
 
-if False:
-    user = connection.query(Usuario).filter_by(id=1).first()
-    connection.delete(user)
-    connection.commit()
+    #alterar 
+    def alterar_nome(nome_primario, nome_alterado)
+        user = connection.query(Usuario).filter_by(nome=nome_primario).first()
+        user.nome = nome
+        connection.commit()
+
+    def excluir_nome(nome)
+        user = connection.query(Usuario).filter_by(nome=nome).first()
+        connection.delete(user)
+        connection.commit()
 
